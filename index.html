@@ -72,7 +72,7 @@
       z-index: 10;
       align-items: center;
       justify-content: center;
-      background: rgba(0, 0, 0, 0.4);
+      background: rgba(0, 0, 0, 0.6);
     }
 
     .mask.flex {
@@ -83,9 +83,44 @@
       bottom: 0 !important;
     }
 
+    .add_people {
+      margin: 0 auto;
+      padding: 10px 0;
+      width: 90%;
+      height: 44px;
+      text-align: center;
+      background: pink;
+      color: #fff;
+      border-radius: 4px;
+      text-align: center;
+    }
+
+    .wx-img {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: 10;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .wx-img.flex {
+      display: flex;
+    }
+
+    .wx-img img {
+      width: 100%;
+    }
   </style>
 </head>
 <body>
+<div style="padding: 10px 0">
+  <div class="add_people">点击更多</div>
+</div>
 <ul class="img-box">
   <li class="img-item">
     <div class="img-content">
@@ -210,6 +245,10 @@
   </div>
 </div>
 
+<div class="wx-img">
+  <img src="./image/wx.jpg" alt="">
+</div>
+
 </body>
 </html>
 <script src="./js/swiper-3.4.2.min.js"></script>
@@ -220,14 +259,7 @@
             $('body').addClass('rotate')
             $('.mask').addClass('flex')
             setTimeout(() => {
-                var mySwiper = new Swiper('.swiper-container', {
-                    // direction: 'vertical',
-                    // loop: true,
-                    // effect: 'flip',
-
-                    // 如果需要分页器
-                    // pagination: '.swiper-pagination',
-                })
+                var mySwiper = new Swiper('.swiper-container', {})
                 mySwiper.slideTo(i, 1000, false);//切换到第一个slide，速度为1秒
             }, 100)
         })
@@ -238,4 +270,11 @@
         $('body').removeClass('rotate')
     })
 
+    $('.add_people').click(() => {
+        $('.wx-img').addClass('flex')
+    })
+
+    $('.wx-img').click(() => {
+        $('.wx-img').removeClass('flex')
+    })
 </script>
